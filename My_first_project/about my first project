@@ -1,0 +1,5 @@
+In this project I am creating a very simple jenkins pipeline which will deploy a java application to a tomcat server 
+Steps involved:
+ 1.git clone
+ 2.build using maven
+ 3.Deploy to tomcat
