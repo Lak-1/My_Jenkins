@@ -1,0 +1,38 @@
+Refer:-https://www.youtube.com/watch?v=kO7wrtY2b3E&t=90s ( valaxy technologies)
+
+1. Install maven in jenkins server:
+   sudo apt update
+   sudo apt install maven
+   mvn -version
+   
+  Global tool configuration--> maven installations -->provide maven installation name and path.
+  name : maven 3.6.2
+  maven_home :/usr/share/maven 
+
+2. Pipeline script :
+   We should specify where is the maven installed .So mvn path need to be specified.
+   whereis mvn --> provides maven path
+   or mvn --version --> also provides path
+   
+    pipeline {
+    agent any
+    environment {
+         PATH = "/usr/share/maven:$PATH"
+    }
+    stages {
+        stage('git clone stage') {
+            steps {
+                git 'https://github.com/ravdy/hello-world.git'
+            }
+        }
+        stage('build with maven') {
+            steps {
+                sh "mvn clean install"
+            }
+        }
+    }
+}
+............................................................
+
+This will create webapp.war file in jenkins server this folder:-
+/var/lib/jenkins/workspace/first_pipeline/webapp/target/webapp.war

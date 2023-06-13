@@ -1,0 +1,48 @@
+Refer step by step instructions from here:
+https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-10-on-ubuntu-20-04
+also :-https://www.youtube.com/watch?v=68WNroQBUts
+
+
+
+1.sudo su -
+2.sudo apt update ,sudo apt install default-jdk, java -version --> install java 
+3. go inside /opt and install tomcat there
+4. wget https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.90/bin/apache-tomcat-8.5.90.tar.gz
+   ( we can get the tomcat link to download .tz file from the tomcat official site )
+5. tar -xvzf apache-tomcat-9.0.76.tar.gz --> extract it 
+6. cd tomcat directory and do 'ls'
+7. cd bin
+8. ./startup.sh --> running this script to start the tomcat 
+  At this moment access server using publicip:8080
+
+9. Inorder for users to access tomcat server need to edit two files.
+   cd /opt/tomcat-8.5.90/webapps/manager/META-INF/
+   vi context.xml
+   comment the 'value' entry in this file using 
+     <!--                  -->
+
+   cd /opt/tomcat-8.5.90/webapps/host-manager/META-INF/
+   vi context.xml
+   comment 'value' entry
+     <!--                 -->
+10. Once config has been changed restart tomcat using ./shutdown.sh and ./startup.sh
+
+11.setup users and roles and need to edit conf/tomcat-user.xml file under tomcat-users session
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="manager-status"/>
+<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+<user username="deployer" password="deployer" roles="manager-script"/>
+<user username="tomcat" password="tomcat" roles="manager-gui"/>
+
+12. once done restart tomcat
+
+    
+   
+
+
+   
+
+

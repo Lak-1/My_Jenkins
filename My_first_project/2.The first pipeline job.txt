@@ -1,0 +1,22 @@
+refer-->https://www.youtube.com/watch?v=DCY530UL0as&list=PLxzKY3wu0_FLpmifb-i9xw6R-zmWA-7Bc
+
+The below pipeline will clone git repo to the local jenkins server to this folder in server:/var/lib/jenkins/workspace/first_pipeline.
+
+git repo used:https://github.com/ravdy/hello-world
+
+Pipeline script :
+
+pipeline {
+    agent any
+
+    stages {
+        stage('git stage') {
+            steps {
+                git 'https://github.com/ravdy/hello-world.git'
+            }
+        }
+    }
+}
+
+
+

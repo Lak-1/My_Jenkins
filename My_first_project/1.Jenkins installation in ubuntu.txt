@@ -1,0 +1,43 @@
+
+Install java 
+$sudo apt update
+$ sudo apt install openjdk-11-jre
+$ java -version
+
+Installing curl and installing jenkins :
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+sudo apt-get install jenkins
+
+Enabling Jenkins :
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+Inside this path:
+/var/lib/jenkins/secrets/initialAdminPassword
+To go to this path :
+ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+ there we can find password
+ 
+ username: admin
+ password : 
+ 
+ once we get it we can have GUI of jenkins.
+ To access gui, we need to do http://localhost:8080
+ Jenkins is a service that runs of local host in port 8080
+ To login use default password and set new username ,password
+ 
+ In this GUI we are configuring all jenkins details.
+ here we are integrating with our git hub repo
+ 
+ we can create jenins nodes/slaves from here
+ 
+ 
+ 
+
